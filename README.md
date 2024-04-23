@@ -38,3 +38,7 @@ $this->sitemapController;
 ```
 
 Check the lines [41](https://github.com/buraksahin59/CodeIgniter4-Sitemap-Generator/blob/efbeb14dc91eb4915ce6e50871315be339602b8f/App/Controllers/BlogController.php#L41), [72](https://github.com/buraksahin59/CodeIgniter4-Sitemap-Generator/blob/efbeb14dc91eb4915ce6e50871315be339602b8f/app/Controllers/BlogController.php#L72), [97](https://github.com/buraksahin59/CodeIgniter4-Sitemap-Generator/blob/efbeb14dc91eb4915ce6e50871315be339602b8f/App/Controllers/BlogController.php#L97).
+
+----
+
+Thanks to [Gerard Nijboer](https://github.com/alphabase/CodeIgniter-Sitemap-Generator) to create in the CodeIgniter 3 code structure.
