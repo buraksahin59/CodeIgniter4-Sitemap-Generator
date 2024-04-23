@@ -1,16 +1,15 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
 
-/**
- * A class for generating XML sitemaps and sitemap indexes with the CodeIgniter PHP Framework
- * More information about sitemaps: http://www.sitemaps.org/protocol.html
- * 
- * @author Gerard Nijboer <me@gerardnijboer.com>
- * @version 1.0
- * @access public
- *
- */
-class SitemapModel extends CI_Model {
-	
+namespace App\Models;
+
+use \CodeIgniter\Model;
+
+class SitemapModel extends Model {
+
+    protected $urls;
+    protected $changefreqs;
+    protected $output;
+
 	/**
 	 * Prepare the class variables for storing items and checking valid changefreq values
 	 * 
@@ -18,7 +17,6 @@ class SitemapModel extends CI_Model {
 	 * @return void
 	 */
 	public function __construct() {
-		parent::__construct();
 		$this->urls = array();
 		$this->changefreqs = array(
 			'always',
@@ -29,6 +27,7 @@ class SitemapModel extends CI_Model {
 			'yearly',
 			'never'
 		);
+		$this->output = null;
 	}
 	
 	/**
@@ -37,7 +36,7 @@ class SitemapModel extends CI_Model {
 	 * @param string $loc URL of the page. This URL must begin with the protocol (such as http) and end with a trailing slash, if your web server requires it. This value must be less than 2,048 characters.
 	 * @param string $lastmod The date of last modification of the file. This date should be in W3C Datetime format. This format allows you to omit the time portion, if desired, and use YYYY-MM-DD.
 	 * @param string $changefreq How frequently the page is likely to change. This value provides general information to search engines and may not correlate exactly to how often they crawl the page.
-	 * @param number $priority The priority of this URL relative to other URLs on your site. Valid values range from 0.0 to 1.0. This value does not affect how your pages are compared to pages on other sites—it only lets the search engines know which pages you deem most important for the crawlers.
+	 * @param number $priority The priority of this URL relative to other URLs on your site. Valid values range from 0.0 to 1.0. This value does not affect how your pages are compared to pages on other sitesâ€”it only lets the search engines know which pages you deem most important for the crawlers.
 	 * @access public
 	 * @return boolean
 	 */
@@ -52,7 +51,7 @@ class SitemapModel extends CI_Model {
 			show_error('Invalid value for priority: '.$priority);
 			return false;
 		}
-		$item = new stdClass();
+		$item = new \stdClass();
 		$item->loc = $loc;
 		$item->lastmod = $lastmod;
 		$item->changefreq = $changefreq;
@@ -70,8 +69,8 @@ class SitemapModel extends CI_Model {
 	 * @return void
 	 */
 	public function output($type = 'urlset') {
-		$xml = new SimpleXMLElement('<?xml version="1.0" encoding="UTF-8" ?><'.$type.'/>');
-		$xml->addAttribute('xmlns', 'http://www.sitemaps.org/schemas/sitemap/0.9');
+		$xml = new \SimpleXMLElement("<?xml version=\"1.0\" encoding=\"UTF-8\" ?><{$type} xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd\" />");
+
 		if ($type == 'urlset') {
 			foreach ($this->urls as $url) {
 				$child = $xml->addChild('url');
@@ -87,7 +86,7 @@ class SitemapModel extends CI_Model {
 				if (isset($url->lastmod)) $child->addChild('lastmod', $url->lastmod);
 			}
 		}
-		$this->output->set_content_type('application/xml')->set_output($xml->asXml());
+		return $xml->asXml();
 	}
 	
 	/**
