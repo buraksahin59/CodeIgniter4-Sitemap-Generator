@@ -37,4 +37,4 @@ If there is no error during action (insert, update, delete), Add the code given 
 $this->sitemapController;
 ```
 
-Check the lines [41](https://github.com/buraksahin59/CodeIgniter4-Sitemap-Generator/blob/f0df6029ddc027c93b1d9080bb92c3c16fe2827d/App/Controllers/BlogController.php#L41), [72](https://github.com/buraksahin59/CodeIgniter4-Sitemap-Generator/blob/f0df6029ddc027c93b1d9080bb92c3c16fe2827d/App/Controllers/BlogController.php#L72), [97](https://github.com/buraksahin59/CodeIgniter4-Sitemap-Generator/blob/f0df6029ddc027c93b1d9080bb92c3c16fe2827d/App/Controllers/BlogController.php#L97).
+Check the lines [41](https://github.com/buraksahin59/CodeIgniter4-Sitemap-Generator/blob/efbeb14dc91eb4915ce6e50871315be339602b8f/App/Controllers/BlogController.php#L41), [72](https://github.com/buraksahin59/CodeIgniter4-Sitemap-Generator/blob/efbeb14dc91eb4915ce6e50871315be339602b8f/app/Controllers/BlogController.php#L72), [97](https://github.com/buraksahin59/CodeIgniter4-Sitemap-Generator/blob/efbeb14dc91eb4915ce6e50871315be339602b8f/App/Controllers/BlogController.php#L97).

@@ -43,7 +43,7 @@ class BlogController extends BaseController {
                 return json_encode( array('result' => true, 'message' => lang('API.BlogController.addBlog.success')) );
             }
         }
-	}
+    }
 
     // Edit Blog
     public function editBlog($hash) {
@@ -75,7 +75,7 @@ class BlogController extends BaseController {
             }
 
         }
-	}
+    }
 
     // Delete Blog
     public function deleteBlog() {
@@ -99,6 +99,6 @@ class BlogController extends BaseController {
                 return json_encode( array('result' => true, 'message' => lang('API.BlogController.deleteBlog.success')) );
             }
         }
-	}
+    }
 
 }
